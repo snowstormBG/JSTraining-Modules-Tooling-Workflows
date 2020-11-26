@@ -7,13 +7,12 @@ export class Tooltip extends Cmpnt {
         super(hostElementId);
         this.closeNotifier = closeNotifierFunction;
         this.text = text;
+        this.closeTooltip = () => {
+            this.detach();
+            this.closeNotifier();
+        };
         this.create();
     }
-
-    closeTooltip = () => {
-        this.detach();
-        this.closeNotifier();
-    };
 
     // eslint-disable-next-line max-statements
     create() {
@@ -22,7 +21,7 @@ export class Tooltip extends Cmpnt {
         tooltipElement.className = 'card';
         const tooltipTemplate = document.getElementById('tooltip');
         const tooltipBody = document.importNode(tooltipTemplate.content,
-true);
+            true);
 
         tooltipBody.querySelector('p').textContent = this.text;
         tooltipElement.append(tooltipBody);
@@ -40,7 +39,7 @@ true);
         tooltipElement.style.top = `${yPos}px`;
 
         tooltipElement.addEventListener('click',
-this.closeTooltip);
+            this.closeTooltip);
         this.element = tooltipElement;
     }
 }

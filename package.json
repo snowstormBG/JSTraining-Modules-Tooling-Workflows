@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,8 @@
   "homepage": "https://github.com/snowstormBG/JSTraining-Modules-Tooling-Workflows#readme",
   "devDependencies": {
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.14.0"
+    "eslint": "^7.14.0",
+    "webpack": "4.44.2",
+    "webpack-cli": "4.2.0"
   }
 }
