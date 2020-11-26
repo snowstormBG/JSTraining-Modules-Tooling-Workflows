@@ -1,4 +1,12 @@
-export function doNothing() {}
+/**
+ * no idea
+ * @returns {number} Gives zero;
+ */
+export function doNothing() {
+    const zero = 0;
+
+    return zero;
+}
 
 export default class Component {
     constructor(hostElementId, insertBefore = false) {
@@ -19,7 +27,9 @@ export default class Component {
 
     attach() {
         this.hostElement.insertAdjacentElement(
-            this.insertBefore ? 'afterbegin' : 'beforeend',
+            this.insertBefore
+                ? 'afterbegin'
+                : 'beforeend',
             this.element
         );
     }

@@ -1,5 +1,6 @@
-import { ProjectItem } from './ProjectItem.js';
+/* eslint-disable id-length */
 import { DOMHelper } from '../Utility/DOMHelper.js';
+import { ProjectItem } from './ProjectItem.js';
 
 export class ProjectList {
     projects = [];
@@ -7,9 +8,12 @@ export class ProjectList {
     constructor(type) {
         this.type = type;
         const prjItems = document.querySelectorAll(`#${type}-projects li`);
+
         for (const prjItem of prjItems) {
             this.projects.push(
-                new ProjectItem(prjItem.id, this.switchProject.bind(this), this.type)
+                new ProjectItem(prjItem.id,
+this.switchProject.bind(this),
+this.type)
             );
         }
         console.log(this.projects);
@@ -19,34 +23,42 @@ export class ProjectList {
     connectDroppable() {
         const list = document.querySelector(`#${this.type}-projects ul`);
 
-        list.addEventListener('dragenter', event => {
+        list.addEventListener('dragenter',
+(event) => {
+    // eslint-disable-next-line no-magic-numbers
             if (event.dataTransfer.types[0] === 'text/plain') {
                 list.parentElement.classList.add('droppable');
                 event.preventDefault();
             }
         });
 
-        list.addEventListener('dragover', event => {
+        list.addEventListener('dragover',
+(event) => {
+    // eslint-disable-next-line no-magic-numbers
             if (event.dataTransfer.types[0] === 'text/plain') {
                 event.preventDefault();
             }
         });
 
-        list.addEventListener('dragleave', event => {
+        list.addEventListener('dragleave',
+(event) => {
             if (event.relatedTarget.closest(`#${this.type}-projects ul`) !== list) {
                 list.parentElement.classList.remove('droppable');
             }
         });
 
-        list.addEventListener('drop', event => {
+        list.addEventListener('drop',
+(event) => {
             const prjId = event.dataTransfer.getData('text/plain');
-            if (this.projects.find(p => p.id === prjId)) {
+
+    // eslint-disable-next-line id-length
+            if (this.projects.find((p) => p.id === prjId)) {
                 return;
             }
-            document
-                .getElementById(prjId)
-                .querySelector('button:last-of-type')
-                .click();
+            document.
+                getElementById(prjId).
+                querySelector('button:last-of-type').
+                click();
             list.parentElement.classList.remove('droppable');
             // event.preventDefault(); // not required
         });
@@ -58,14 +70,16 @@ export class ProjectList {
 
     addProject(project) {
         this.projects.push(project);
-        DOMHelper.moveElement(project.id, `#${this.type}-projects ul`);
-        project.update(this.switchProject.bind(this), this.type);
+        DOMHelper.moveElement(project.id,
+`#${this.type}-projects ul`);
+        project.update(this.switchProject.bind(this),
+this.type);
     }
 
     switchProject(projectId) {
         // const projectIndex = this.projects.findIndex(p => p.id === projectId);
         // this.projects.splice(projectIndex, 1);
-        this.switchHandler(this.projects.find(p => p.id === projectId));
-        this.projects = this.projects.filter(p => p.id !== projectId);
+        this.switchHandler(this.projects.find((p) => p.id === projectId));
+        this.projects = this.projects.filter((p) => p.id !== projectId);
     }
 }

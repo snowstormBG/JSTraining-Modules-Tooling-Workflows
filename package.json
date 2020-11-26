@@ -1,0 +1,23 @@
+{
+  "name": "modules-01-starting-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snowstormBG/JSTraining-Modules-Tooling-Workflows.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/snowstormBG/JSTraining-Modules-Tooling-Workflows/issues"
+  },
+  "homepage": "https://github.com/snowstormBG/JSTraining-Modules-Tooling-Workflows#readme",
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.14.0"
+  }
+}
